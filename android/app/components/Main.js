@@ -42,7 +42,8 @@ export default class Main extends React.Component{
         
         let notes = this.state.noteArray.map((val,id) => {
             return <Note key={id} val={val}
-            deleteMethod={ ()=> this.deleteNote(id,val.dbid)} />
+            deleteMethod={ ()=> this.deleteNote(id,val.dbid)}
+            editMethod ={ () => this.editNote(id,val.dbid)} />
         });
 
         return (
@@ -135,6 +136,22 @@ export default class Main extends React.Component{
         this.DeleteNoteDb(id)
         this.state.noteArray.splice(key, 1);
         this.setState({noteArray: this.state.noteArray})
+    }
+
+    editNote(key, id){
+        this.DeleteNoteDb(id)
+        this.state.noteArray.splice(key, 1);
+        this.setState({noteArray: this.state.noteArray})
+
+        if (this.state.noteText) {
+            let d = new Date();
+            var newNote = {
+              date: d.getFullYear() + "/" + (d.getMonth() + 1) + "/" + d.getDate(),
+              note: this.state.noteText
+            };
+            this.InsertNoteDb(newNote);
+            this.GetNoteId(newNote)
+          }
     }
 
     DeleteNoteDb(id){
