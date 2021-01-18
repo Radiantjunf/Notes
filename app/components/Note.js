@@ -17,6 +17,9 @@ export default class Note extends React.Component{
                 <TouchableOpacity onPress={this.props.deleteMethod} style={styles.noteDelete}>
                     <Text style={styles.noteDeleteText}>X</Text>
                 </TouchableOpacity>
+                <TouchableOpacity onPress={this.props.editMethod} style={styles.noteEdit}>
+                    <Text style={styles.noteEditText}>E</Text>
+                </TouchableOpacity>
             </View>
         );
     }
@@ -49,6 +52,19 @@ const styles = StyleSheet.create({
         right: 10
     },
     noteDeleteText: {
+        color: 'white',
+    },
+    noteEdit: {
+        position: 'absolute',
+        justifyContent: 'center',
+        alignItems: 'center',
+        backgroundColor: '#3CB371',
+        padding: 10,
+        top: 10,
+        bottom: 10,
+        right: 50
+    },
+    noteEditText: {
         color: 'white',
     }
 });
