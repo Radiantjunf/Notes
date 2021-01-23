@@ -7,7 +7,7 @@ class TaskScreen extends Component {
 
   constructor() {
     super();
-    this.firestoreRef = firebase.firestore().collection('Tarefas');
+    this.firestoreRef = firebase.firestore().collection('Tarefas').where("id", "==", firebase.auth().currentUser.uid);
     this.state = {
       isLoading: true,
       taskArr: []

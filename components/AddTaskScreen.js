@@ -7,6 +7,7 @@ class AddTaskScreen extends Component {
     super();
     this.dbRef = firebase.firestore().collection('Tarefas');
     this.state = {
+      id:'',
       tarefa: '',
       descricao: '',
       isLoading: false
@@ -27,10 +28,12 @@ class AddTaskScreen extends Component {
         isLoading: true,
       });      
       this.dbRef.add({
+        id: firebase.auth().currentUser.uid,
         tarefa: this.state.tarefa,
         descricao: this.state.descricao,
       }).then((res) => {
         this.setState({
+          id: '',
           tarefa: '',
           descricao: '',
           isLoading: false,
