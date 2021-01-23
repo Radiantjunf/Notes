@@ -21,7 +21,7 @@ export default class Signup extends Component {
     this.setState(state);
   }
 
-  registerUser = () => {
+registerUser = () => {
     if(this.state.email === '' && this.state.password === '') {
       Alert.alert('Insira dados de registo!')
     } else {
@@ -41,10 +41,14 @@ export default class Signup extends Component {
           email: '',
           password: ''
         })
+        alert('Utilizador criado com sucesso!')
         this.props.navigation.navigate('Login')
       })
       .catch(function (err){
-      alert('Utilizador já existe!');}).then(() => this.props.navigation.replace('Signup'))
+      if(err == 'Error: The email address is badly formatted.')
+            alert('E-mail de registo inválido!')
+      else alert('Utilizador já existe!')})
+      .finally(() => this.props.navigation.navigate('Login'))
 
 
     }

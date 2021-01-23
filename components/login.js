@@ -46,7 +46,7 @@ export default class Login extends Component {
         this.props.navigation.navigate('TaskScreen')
       })
       .catch(function (err){
-            alert('Credenciais inválidas');}).then(() => this.props.navigation.replace('Login'))
+            alert('Credenciais invalidas!');}).then(() => this.props.navigation.replace('Login'))
     }
   }
 
