@@ -16,9 +16,9 @@ function MyStack() {
     <Stack.Navigator
       screenOptions={{
           headerStyle: {
-            backgroundColor: '#621FF7',
+            backgroundColor: '#03DAC5',
           },
-          headerTintColor: '#fff',
+          headerTintColor: '#000000',
           headerTitleStyle: {
             fontWeight: 'bold',
           },
