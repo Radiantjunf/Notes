@@ -7,6 +7,7 @@ class TaskDetailScreen extends Component {
   constructor() {
     super();
     this.state = {
+      id: '',
       tarefa: '',
       descricao: '',
       isLoading: true
@@ -20,6 +21,7 @@ class TaskDetailScreen extends Component {
         const task = res.data();
         this.setState({
           key: res.id,
+          id: task.id,
           tarefa: task.tarefa,
           descricao: task.descricao,
           isLoading: false
@@ -42,14 +44,15 @@ class TaskDetailScreen extends Component {
     });
     const updateDBRef = firebase.firestore().collection('Tarefas').doc(this.state.key);
     updateDBRef.set({
+    id: this.state.id,
       tarefa: this.state.tarefa,
       descricao: this.state.descricao,
     }).then((docRef) => {
       this.setState({
         key: '',
-        name: '',
-        email: '',
-        mobile: '',
+        id: '',
+        tarefa: '',
+        descricao: '',
         isLoading: false,
       });
       this.props.navigation.navigate('TaskScreen');
